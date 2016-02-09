@@ -1,0 +1,29 @@
+# Template information section
+name: "base_viper_swift"
+summary: "My Swift VIPER module template (minimal version)"
+author: "Maxim Tsvetkov"
+version: "0.0.1"
+license: "MIT"
+
+# The declarations for code files
+
+code_files:
+# View
+- {name: View/ViewInput.swift,  path: Code/View/view_input.swift.liquid}
+- {name: View/ViewOutput.swift, path: Code/View/view_output.swift.liquid}
+- {name: View/ViewController.swift, path: Code/View/viewcontroller.swift.liquid}
+
+# Presenter
+- {name: Presenter/Presenter.swift, path: Code/Presenter/presenter.swift.liquid}
+
+# Interactor
+- {name: Interactor/InteractorInput.swift, path: Code/Interactor/interactor_input.swift.liquid}
+- {name: Interactor/InteractorOutput.swift, path: Code/Interactor/interactor_output.swift.liquid}
+- {name: Interactor/Interactor.swift, path: Code/Interactor/interactor.swift.liquid}
+
+# Router
+- {name: Router/Router.swift, path: Code/Router/router.swift.liquid}
+- {name: Router/RouterImplementation.swift, path: Code/Router/router_implementation.swift.liquid}
+
+# Assembly
+- {name: Assembly/Assembly.swift, path: Code/Assembly/assembly.swift.liquid}

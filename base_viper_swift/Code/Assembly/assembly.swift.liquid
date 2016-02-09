@@ -1,0 +1,58 @@
+//
+//  {{ prefix }}{{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import UIKit
+import Typhoon
+
+public class {{ module_info.name }}Assembly: TyphoonAssembly {
+
+    public dynamic func view{{ module_info.name }}() -> AnyObject {
+
+        // TODO: Configure storyboard for factory
+        return TyphoonDefinition.withFactory(<storyboard>,
+            selector: "instantiateViewControllerWithIdentifier:",
+            parameters: {
+                (factoryMethod) in
+                factoryMethod.injectParameterWith("{{ module_info.name }}ViewController")
+                },
+            configuration: {
+                (factoryDefinition) in
+                factoryDefinition.injectProperty("output", with: self.presenter{{ module_info.name }}())
+        })
+    }
+
+    public dynamic func interactor{{ module_info.name }}() -> AnyObject {
+
+        return TyphoonDefinition.withClass({{ module_info.name }}Interactor.self) {
+            
+            (definition) in
+                
+            definition.injectProperty("output", with: self.presenter{{ module_info.name }}())
+        }
+    }
+
+    public dynamic func presenter{{ module_info.name }}() -> AnyObject {
+
+        return TyphoonDefinition.withClass({{ module_info.name }}Presenter.self) {
+            
+            (definition) in
+                
+            definition.injectProperty("view", with: self.view{{ module_info.name }}())
+            definition.injectProperty("interactor", with: self.interactor{{ module_info.name }}())
+            definition.injectProperty("router", with: self.router{{ module_info.name }}())
+        }
+    }
+    
+    public dynamic func router{{ module_info.name }}() -> AnyObject {
+
+        return TyphoonDefinition.withClass({{ module_info.name }}RouterImplementation.self) {
+            
+            (definition) in
+        }
+    }
+}
